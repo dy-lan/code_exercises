@@ -2,10 +2,9 @@
 ## word, and output the longest word that contains all unique letters
 
 class LongestUniqueWordApp
-
   # read the file into an array
   def read_file(file)
-    words_array = File.readlines(file, chomp: true)
+    File.readlines(file, chomp: true)
   end
 
   # determine if word contains unique letters
@@ -20,7 +19,7 @@ class LongestUniqueWordApp
       # check if the count of the letter has already been incremented
       # if no, add 1
       # if yes, return false
-      if letter_count[letter] == nil || letter_count[letter] == 0
+      if letter_count[letter].nil? || (letter_count[letter]).zero?
         letter_count[letter] = 1
       else
         has_unique_letters = false
@@ -34,11 +33,10 @@ class LongestUniqueWordApp
   # get longest word in an array, where the word contains only unique letters
   def longest_unique_word(arr)
     unique_array = []
-    longest_word_length = 0
 
     arr.each do |word|
       # pass the word to the unique_letters method
-      if self.unique_letters(word)
+      if unique_letters(word)
         # if the word is unique, add it to the array
         unique_array << word
       end
@@ -57,8 +55,7 @@ word_array = word_object.read_file('./words.txt')
 
 # output the result - the first longest word in a list of words, where the word
 # contains no duplicate letters
-puts 'The longest word containing only unique letters is: ' \
-  + word_object.longest_unique_word(word_array)
+puts "The longest word containing only unique letters is: #{word_object.longest_unique_word(word_array)}"
 
 # Tests
 require 'rspec'
@@ -77,6 +74,6 @@ describe LongestUniqueWordApp do
   end
 
   it 'returns the longest word from an array of words with only unique letters' do
-    expect(longest_unique_word.longest_unique_word(['apple', 'cats', 'dragons'])).to eq('dragons')
+    expect(longest_unique_word.longest_unique_word(%w[apple cats dragons])).to eq('dragons')
   end
 end

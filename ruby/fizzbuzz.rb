@@ -1,11 +1,10 @@
 # fizzbuzz
 class FizzBuzz
-
   # method to determine fizzbuzz
   def fizzbuzz(num)
     return_str = ''
-    return_str += 'fizz' if num % 3 == 0
-    return_str += 'buzz' if num % 5 == 0
+    return_str += 'fizz' if (num % 3).zero?
+    return_str += 'buzz' if (num % 5).zero?
     return_str.empty? ? num : return_str
   end
 end
@@ -33,10 +32,10 @@ describe FizzBuzz do
   end
 
   it 'prints fizzbuzz when 3 and 5' do
-    expect(fizz_buzz.fizzbuzz(15)).to eq ('fizzbuzz')
+    expect(fizz_buzz.fizzbuzz(15)).to eq('fizzbuzz')
   end
 
   it 'prints number when neither 3 nor 5' do
-    expect(fizz_buzz.fizzbuzz(1)).to eq (1)
+    expect(fizz_buzz.fizzbuzz(1)).to eq(1)
   end
 end
