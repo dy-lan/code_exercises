@@ -29,8 +29,8 @@ class ChangeCalc
       if cents < v
         change[k] = 0
       else
-        change[k] = (cents / v)
-        cents -= v
+        change[k] = (cents / v).to_i
+        cents -= (change[k] * v)
       end
     end
 
