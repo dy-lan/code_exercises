@@ -63,4 +63,10 @@ describe ChangeCalc do
     expect(changecalc.change_calc(69.69, 80)).to eq({ 'quarters' => 1, 'dimes' => 0, \
                                                       'nickels' => 1, 'pennies' => 1, :dollars => 10 })
   end
+
+  it 'returns correct change' do
+    # [ dollars, quarters, dimes, nickels, pennies ]
+    expect(changecalc.change_calc(36.36, 40)).to eq({ 'quarters' => 2, 'dimes' => 1, \
+                                                      'nickels' => 0, 'pennies' => 4, :dollars => 3 })
+  end
 end
